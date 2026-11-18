@@ -4,6 +4,6 @@
 
 <template>
   <main>
-    salom
+    Footer
   </main>
 </template>
