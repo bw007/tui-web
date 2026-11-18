@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('@/assets/fonts/SFPRODISPLAYREGULAR.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('@/assets/fonts/SFPRODISPLAYMEDIUM.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('@/assets/fonts/SFPRODISPLAYBOLD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-brand: #3861A7;
+  --color-brand-accent: #4A83E5;
+  --color-brand-light: #708FC3;
+  --color-brand-soft: #E5EFF9;
+  --color-brand-pale: #DBEAFE;
+
+  --color-dark: #101828;
+  --color-navy: #081E3A;
+  --color-slate: #364153;
+  --color-muted: #99A1AF;
+  --color-border: #D1D5DC;
+  --color-surface: #EEF2F6;
+
+  --font-sf: 'SF Pro Display', Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: Arial, sans-serif;
+    line-height: normal;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.25;
+  }
+}
