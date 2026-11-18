@@ -94,10 +94,3 @@ const socials = [
     </div>
   </section>
 </template>
-
-
-<!-- 
-    <IndexingSlider />
-    <FeedbackPollSection />
-    <PartnersSection />
- -->
