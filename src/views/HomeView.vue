@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import CtaBanner from '@/components/CtaBanner.vue';
 import DirectionsSection from '@/components/DirectionsSection.vue';
+import FormSection from '@/components/FormSection.vue';
 import HeroSection from '@/components/HeroSection.vue';
 import IndexingSlider from '@/components/IndexingSlider.vue';
 import LatestArticlesSection from '@/components/LatestArticlesSection.vue';
 import NewsSection from '@/components/NewsSection.vue';
+import PartnerSection from '@/components/PartnerSection.vue';
 
 </script>
 
@@ -15,4 +17,6 @@ import NewsSection from '@/components/NewsSection.vue';
   <NewsSection />
   <LatestArticlesSection />
   <IndexingSlider />
+  <FormSection />
+  <PartnerSection />
 </template>

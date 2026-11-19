@@ -1,27 +1,24 @@
 <script setup lang="ts">
+import { apiStore } from '@/stores/api.ts';
 import IconInstagram from './icons/IconInstagram.vue';
 import IconMessage from './icons/IconMessage.vue';
 import IconTelegram from './icons/IconTelegram.vue';
 import BaseButton from './ui/BaseButton.vue';
+import { onMounted } from 'vue';
+import { homeStore } from '@/stores/home.ts';
+import { storeToRefs } from 'pinia';
 
-interface StatItem {
-  value: string
-  label: string
-}
+const home = homeStore();
+const { socials, stats } = storeToRefs(home);
 
-const stats: StatItem[] = [
-  { value: '500+', label: 'Нашр этилган мақолалар' },
-  { value: '200+', label: 'Муаллифлар' },
-  { value: '15+', label: 'Мамлакатлар' },
-]
-
-const socials = [
-  { name: 'Instagram', href: '#', icon: IconInstagram },
-  { name: 'Telegram', href: '#', icon: IconTelegram },
-  { name: 'Facebook', href: '#' },
-  { name: 'YouTube', href: '#' },
-  { name: 'X', href: '#' },
-]
+onMounted(() => {
+  home.getSocials().then((res) => {
+    console.log(res);
+  });
+  home.getStats().then((res) => {
+    console.log(res);
+  });
+})
 </script>
 
 <template>
@@ -31,11 +28,12 @@ const socials = [
     >
       <a
         v-for="social in socials"
-        :key="social.name"
+        :key="social.title"
         target="_blank"
         class="w-11 h-11 bg-brand-light cursor-pointer hover:bg-brand-light/75 rounded-r-lg flex items-center justify-center text-white transition-colors"
       >
-        <component :is="social.icon || IconInstagram" />
+        <img :src="social.files[0]?.img" :alt="social.title" class="w-5 h-5 object-contain" />
+        <!-- <component :is="social.files[0]?.img || IconInstagram" /> -->
       </a>
     </div>
 
@@ -79,14 +77,15 @@ const socials = [
       <div class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-3.5 md:gap-6">
         <div
           v-for="item in stats"
-          :key="item.label"
+          :key="item.id"
           class="bg-white/10 border flex flex-col gap-1.5 border-white/20 rounded-[10px] p-4 h-25.5 text-center"
         >
           <div class="text-[28px] sm:text-[36px] leading-none">
-            {{ item.value }}
+            {{ item.options }}
           </div>
           <div class="text-xs sm:text-[16px] text-white/80 mt-1.5">
-            {{ item.label }}
+            <!-- {{ 'item.label' }} -->
+              Муаллифлар
           </div>
         </div>
       </div>
