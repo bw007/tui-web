@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import BaseButton from './components/ui/BaseButton.vue';
 import IconChat from './components/icons/IconChat.vue';
+import { onMounted } from 'vue';
+import Aos from 'aos';
 
+onMounted(() => {
+  Aos.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100,
+  })
+})
 </script>
 
 <template>
