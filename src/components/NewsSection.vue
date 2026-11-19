@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import IconCalendar from './icons/IconCalendar.vue';
-import IconEye from './icons/IconEye.vue';
 import BaseButton from './ui/BaseButton.vue';
+import NewsCard from './NewsCard.vue';
 import news1 from '@/assets/img.jpg';
 
 interface NewsItem {
@@ -60,37 +59,14 @@ const newsList: NewsItem[] = [
     </div>
 
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-      <div
+      <NewsCard
         v-for="item in newsList"
         :key="item.id"
-        class="group bg-[#E8ECF2] hover:bg-[#DFE5EE] transition-colors rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer"
-      >
-        <div>
-          <div class="w-full h-38.75 overflow-hidden bg-slate-200">
-            <img
-              :src="item.image" :alt="item.title"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-3 pb-2">
-            <h3 class="text-lg font-medium text-[#1E293B] leading-[1.35] line-clamp-3">
-              {{ item.title }}
-            </h3>
-          </div>
-        </div>
-
-        <div class="px-3 pb-3.5 pt-2 flex items-center border-t border-t-brand/10 justify-between text-base text-brand">
-          <span class="inline-flex items-center gap-1.5">
-            <IconCalendar />
-            {{ item.date }}
-          </span>
-
-          <span class="inline-flex items-center gap-1.5">
-            <IconEye />
-            {{ item.views }}
-          </span>
-        </div>
-      </div>
+        :title="item.title"
+        :image="item.image"
+        :date="item.date"
+        :views="item.views"
+      />
     </div>
 
     <BaseButton>
