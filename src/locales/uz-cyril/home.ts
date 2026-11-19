@@ -1,5 +1,6 @@
 export default {
-    "uz": {
+        "o-zhurnale": "Журнал ҳақида",
+        
         "site_test": "Сайт синов режимида",
         "old_site": "Сайтнинг эски талқини",
         "banner_subtitle": "Лойиханинг визуаллаштирилиши дастлабки бўлиб, ўзгаришлар бўлиши мумкин.",
@@ -267,6 +268,7 @@ export default {
         "advertise_on_daryo": "Daryo.uz да реклама беринг",
         "advertise": "Реклама бериш",
         "Buxoro": "Бухоро",
+        
         "Andijon": "Андижон",
         "Fargona": "Фарғона",
         "Jizzax": "Жиззах",
@@ -534,4 +536,3 @@ export default {
         "current_issue": "Жорий сон",
         "archive_badge": "Архив"
     }
-}

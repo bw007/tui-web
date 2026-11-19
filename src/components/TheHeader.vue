@@ -75,7 +75,7 @@ onMounted(() => {
             class="flex items-center gap-1 font-medium hover:text-brand transition-colors"
             active-class="text-brand"
           >
-            <span>{{ item.alias }}</span>
+            <span>{{ $t(item.alias) }}</span>
             <IconDown v-if="item.children.length" class="mx-1 transition-transform duration-200" />
           </RouterLink>
         </div>
