@@ -2,6 +2,7 @@
 import CtaBanner from '@/components/CtaBanner.vue';
 import DirectionsSection from '@/components/DirectionsSection.vue';
 import HeroSection from '@/components/HeroSection.vue';
+import IndexingSlider from '@/components/IndexingSlider.vue';
 import LatestArticlesSection from '@/components/LatestArticlesSection.vue';
 import NewsSection from '@/components/NewsSection.vue';
 
@@ -13,4 +14,5 @@ import NewsSection from '@/components/NewsSection.vue';
   <CtaBanner />
   <NewsSection />
   <LatestArticlesSection />
+  <IndexingSlider />
 </template>

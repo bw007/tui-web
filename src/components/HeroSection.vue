@@ -4,7 +4,6 @@ import IconMessage from './icons/IconMessage.vue';
 import IconTelegram from './icons/IconTelegram.vue';
 import BaseButton from './ui/BaseButton.vue';
 
-
 interface StatItem {
   value: string
   label: string

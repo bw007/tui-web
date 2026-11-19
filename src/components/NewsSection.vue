@@ -60,7 +60,7 @@ const newsList: NewsItem[] = [
     </div>
 
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-      <article
+      <div
         v-for="item in newsList"
         :key="item.id"
         class="group bg-[#E8ECF2] hover:bg-[#DFE5EE] transition-colors rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer"
@@ -90,7 +90,7 @@ const newsList: NewsItem[] = [
             {{ item.views }}
           </span>
         </div>
-      </article>
+      </div>
     </div>
 
     <BaseButton>
