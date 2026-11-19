@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { apiStore } from '@/stores/api.ts';
-import IconInstagram from './icons/IconInstagram.vue';
 import IconMessage from './icons/IconMessage.vue';
-import IconTelegram from './icons/IconTelegram.vue';
 import BaseButton from './ui/BaseButton.vue';
 import { onMounted } from 'vue';
 import { homeStore } from '@/stores/home.ts';

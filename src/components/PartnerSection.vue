@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import BaseButton from './ui/BaseButton.vue';
-import NewsCard from './NewsCard.vue';
 import { homeStore } from '@/stores/home.ts';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';

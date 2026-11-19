@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { apiStore } from "./api";
 import { ref } from "vue";
-import type { AxiosResponse } from "axios";
 import type { Menu, News, Partner, Post, Social, Stat } from "@/types/home-types";
 
 export const homeStore = defineStore("weatherStore", () => {
