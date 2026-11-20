@@ -21,10 +21,6 @@ const languages = [
 ]
 
 const selectedLang = ref(languages[0])
-
-onMounted(() => {
-  home.getMenu();
-})
 </script>
 
 <template>
@@ -75,7 +71,7 @@ onMounted(() => {
             class="flex items-center gap-1 font-medium hover:text-brand transition-colors"
             active-class="text-brand"
           >
-            <span>{{ $t(item.alias) }}</span>
+            <span>{{ item.title }}</span>
             <IconDown v-if="item.children.length" class="mx-1 transition-transform duration-200" />
           </RouterLink>
         </div>

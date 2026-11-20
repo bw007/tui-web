@@ -3,16 +3,10 @@ import BaseButton from './ui/BaseButton.vue';
 import NewsCard from './NewsCard.vue';
 import { homeStore } from '@/stores/home.ts';
 import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
 
 const home = homeStore();
 const { news } = storeToRefs(home);
 
-onMounted(() => {
-  home.getNews({ limit: 5, offset: 0 }).then((res) => {
-    console.log(res);
-  });
-})
 </script>
 
 <template>
@@ -30,7 +24,7 @@ onMounted(() => {
       <NewsCard
         v-for="item in news"
         :key="item.id"
-        :title="item.files[0]! || ''"
+        :title="item.title"
         :image="item.files"
         :date="item.created_at"
         :views="item.views"

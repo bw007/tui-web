@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { apiStore } from "./api";
-import { ref } from "vue";
-import type { Menu, News, Partner, Post, Social, Stat } from "@/types/home-types";
+import { ref, type Ref } from "vue";
+import type { Category, Menu, News, Partner, Post, Social, Stat } from "@/types/home-types";
 
 export const homeStore = defineStore("weatherStore", () => {
   const api = apiStore()
@@ -11,62 +11,24 @@ export const homeStore = defineStore("weatherStore", () => {
   const partners = ref<Partner[] | []>([])
   const socials = ref<Social[] | []>([])
   const stats = ref<Stat[] | []>([])
+  const categories = ref<Category[] | []>([])
+  const bases = ref();
 
-  const getMenu = async () => {
-    let res = await api.get({url: 'menu'});
-
-    if(res && res.status === 200) {
-      menus.value = [ ...res.data.data ]
+  const setData = async (url: string, target: Ref<any[]>, params?: any) => {
+    const res = await api.get({ url, params });
+    if (res && res.status === 200) {
+      target.value = res.data.data;
     }
-  }
+  };
 
-  const getNews = async (params: any) => {
-    let res = await api.get({url: 'news/list/news', params});
-
-    if(res && res.status === 200) {
-      news.value = [ ...res.data.data ]
-    }
-  }
-
-  const getPosts = async (params: any) => {
-    let res = await api.get({url: 'posts', params});
-
-    if(res && res.status === 200) {
-      console.log(res);
-      
-      posts.value = [ ...res.data.data ]
-    }
-  }
-
-  const getPartners = async () => {
-    let res = await api.get({url: 'main/partners'});
-
-    if(res && res.status === 200) {
-      console.log(res);
-      
-      partners.value = [ ...res.data.data ]
-    }
-  }
-
-  const getSocials = async () => {
-    let res = await api.get({url: 'main/social'});
-
-    if(res && res.status === 200) {
-      console.log(res.data.data);
-      
-      socials.value = [ ...res.data.data ]
-    }
-  }
-
-  const getStats = async () => {
-    let res = await api.get({url: 'main/stats'});
-
-    if(res && res.status === 200) {
-      console.log(res.data.data);
-      
-      stats.value = [ ...res.data.data ]
-    }
-  }
+  const getMenu = () => setData('menu', menus);
+  const getNews = (params?: any) => setData('news/list/news', news, params);
+  const getPosts = (params?: any) => setData('posts', posts, params);
+  const getPartners = () => setData('main/partners', partners);
+  const getSocials = () => setData('main/social', socials);
+  const getStats = () => setData('main/stats', stats);
+  const getCategories = (params?: any) => setData('main/category', categories, params);
+  const getBases = () => setData('main/bases', bases);
 
   return {
     getMenu,
@@ -75,12 +37,16 @@ export const homeStore = defineStore("weatherStore", () => {
     getPartners,
     getSocials,
     getStats,
+    getCategories,
+    getBases,
 
     news,
     posts,
     partners,
     socials,
     stats,
+    categories,
+    bases,
     menus
   }
 })

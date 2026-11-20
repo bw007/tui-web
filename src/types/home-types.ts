@@ -10,6 +10,7 @@ export interface News {
   views: number;
   files: string;
   created_at: string
+  title: string
 }
 
 export interface Post {
@@ -24,6 +25,8 @@ export interface Post {
     title: string
   }
   page: string
+  content: string
+  title: string
   authors: {
     title: string
   }[]
@@ -50,4 +53,14 @@ export interface Stat {
   id: number
   options: string
   title: string
+}
+
+export interface Category {
+  id: number
+  title: string
+  posts: number
+  content: string
+  files: {
+    img: string
+  }[]
 }

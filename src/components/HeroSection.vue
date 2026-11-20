@@ -1,21 +1,12 @@
 <script setup lang="ts">
 import IconMessage from './icons/IconMessage.vue';
 import BaseButton from './ui/BaseButton.vue';
-import { onMounted } from 'vue';
 import { homeStore } from '@/stores/home.ts';
 import { storeToRefs } from 'pinia';
 
 const home = homeStore();
 const { socials, stats } = storeToRefs(home);
 
-onMounted(() => {
-  home.getSocials().then((res) => {
-    console.log(res);
-  });
-  home.getStats().then((res) => {
-    console.log(res);
-  });
-})
 </script>
 
 <template>
@@ -81,8 +72,8 @@ onMounted(() => {
             {{ item.options }}
           </div>
           <div class="text-xs sm:text-[16px] text-white/80 mt-1.5">
-            <!-- {{ 'item.label' }} -->
-              Муаллифлар
+            {{ item.title }}
+              <!-- Муаллифлар -->
           </div>
         </div>
       </div>

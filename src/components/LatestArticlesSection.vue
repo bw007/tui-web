@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import IconCalendar from './icons/IconCalendar.vue';
 import IconEye from './icons/IconEye.vue';
 import BaseButton from './ui/BaseButton.vue';
@@ -9,11 +8,6 @@ import { homeStore } from '@/stores/home.ts';
 const home = homeStore();
 const { posts } = storeToRefs(home);
 
-onMounted(() => {
-  home.getPosts({ limit: 6, offset: 0, order: 'desc' }).then((res) => {
-    console.log(res);
-  });
-})
 </script>
 
 <template>
@@ -37,15 +31,15 @@ onMounted(() => {
           <div class="flex flex-col gap-3">
             <div class="flex items-center justify-between gap-2">
               <span class="px-3 py-1 rounded-full bg-sky-100 h-7 text-blue-500 text-sm flex items-center font-medium">
-                {{ article.alias }}
+                {{ article.category.title }}
               </span>
               <span class="text-sm text-slate-500">
                 {{ article.page }}
               </span>
             </div>
 
-            <h3 class="text-xl max-w-xl text-dark">
-              {{ article.alias }}
+            <h3 class="text-xl max-w-xl text-dark line-clamp-2">
+              {{ article.title }}
             </h3>
 
             <a
@@ -56,13 +50,12 @@ onMounted(() => {
               DOI: {{ article.alias }}
             </a>
 
-            <p class="text-sm text-slate-600 line-clamp-3">
-              {{ article.category.title }}
+            <p v-html="article.content" class="text-sm text-slate-600 line-clamp-2">
+              
             </p>
 
             <div class="text-sm text-slate-600">
-              {{ article.alias }}
-              <!-- <span>{{ article.authors.map(a => a.title).join(", ") }}</span> -->
+              <span>{{ article.authors.map(a => a.title).join(", ") }}</span>
             </div>
           </div>
 
