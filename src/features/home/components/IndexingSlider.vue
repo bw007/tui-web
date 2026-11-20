@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import IconDown from './icons/IconDown.vue';
-import { homeStore } from '@/stores/home.ts';
-import { storeToRefs } from 'pinia';
+import IconDown from '@/shared/ui/icons/IconDown.vue'
+import { homeStore } from '@/features/home/stores/home'
+import { storeToRefs } from 'pinia'
 
-const home = homeStore();
-const { bases } = storeToRefs(home);
+const home = homeStore()
+const { bases } = storeToRefs(home)
 </script>
 
 <template>
-<section class="container font-sf mx-auto px-4.5 py-30 flex flex-col gap-10 items-center">
+  <section class="container font-sf mx-auto px-4.5 py-30 flex flex-col gap-10 items-center">
     <div class="flex flex-col gap-3 text-center">
       <h2 class="text-[36px] font-semibold tracking-tight text-navy leading-tight">
         Халқаро индексация базалари

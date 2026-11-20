@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import IconMail from './icons/IconMail.vue'
-import IconPhone from './icons/IconPhone.vue'
-import IconLocation from './icons/IconLocation.vue'
-import IconLinkedin from './icons/IconLinkedin.vue'
-import IconX from './icons/IconX.vue'
-import IconYoutube from './icons/IconYoutube.vue'
+import IconMail from '@/shared/ui/icons/IconMail.vue'
+import IconPhone from '@/shared/ui/icons/IconPhone.vue'
+import IconLocation from '@/shared/ui/icons/IconLocation.vue'
+import IconInstagram from '@/shared/ui/icons/IconInstagram.vue'
+import IconTelegram from '@/shared/ui/icons/IconTelegram.vue'
+import IconLinkedin from '@/shared/ui/icons/IconLinkedin.vue'
+import IconX from '@/shared/ui/icons/IconX.vue'
+import IconYoutube from '@/shared/ui/icons/IconYoutube.vue'
 
 const journalLinks = [
   { label: 'Мақолаларга қўйиладиган талаблар', to: '/about/requirements' },
@@ -74,29 +76,30 @@ const reviewerLinks = [
             <IconLocation class="shrink-0 mt-0.5" />
             <span>Тошкент шаҳри, Абдулла Қодирий кўчаси, 11</span>
           </a>
-          <a href="tel:+998712444444"
-            class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
+          <a href="tel:+998712444444" class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
             <IconPhone class="shrink-0" />
             <span>+998 71 244-44-44</span>
           </a>
-          <a href="mailto:info@tiuglobal.uz"
-            class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
+          <a href="mailto:info@tiuglobal.uz" class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
             <IconMail class="shrink-0" />
             <span>info@tiuglobal.uz</span>
           </a>
         </div>
 
         <div class="flex items-center gap-3 mt-6">
-          <a href="#"
-            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+            <IconInstagram />
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+            <IconTelegram />
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconLinkedin />
           </a>
-          <a href="#"
-            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconX />
           </a>
-          <a href="#"
-            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconYoutube />
           </a>
         </div>
@@ -105,8 +108,7 @@ const reviewerLinks = [
     </div>
 
     <div class="border-t border-white/10">
-      <div
-        class="container mx-auto px-4.5 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/50">
+      <div class="container mx-auto px-4.5 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/50">
         <span>© 2024 TIU Global tadqiqotlar va innovatsiyalar ilmiy jurnali. Barcha huquqlar himoyalangan</span>
         <div class="flex items-center gap-5">
           <RouterLink to="/terms" class="hover:text-white transition-colors">Фойдаланиш шартлари</RouterLink>

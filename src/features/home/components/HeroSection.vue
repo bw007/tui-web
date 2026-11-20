@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import IconMessage from './icons/IconMessage.vue';
-import BaseButton from './ui/BaseButton.vue';
-import { homeStore } from '@/stores/home.ts';
-import { storeToRefs } from 'pinia';
+import IconMessage from '@/shared/ui/icons/IconMessage.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import { homeStore } from '@/features/home/stores/home'
+import { storeToRefs } from 'pinia'
 
-const home = homeStore();
-const { socials, stats } = storeToRefs(home);
-
+const home = homeStore()
+const { socials, stats } = storeToRefs(home)
 </script>
 
 <template>
@@ -21,7 +20,6 @@ const { socials, stats } = storeToRefs(home);
         class="w-11 h-11 bg-brand-light cursor-pointer hover:bg-brand-light/75 rounded-r-lg flex items-center justify-center text-white transition-colors"
       >
         <img :src="social.files[0]?.img" :alt="social.title" class="w-5 h-5 object-contain" />
-        <!-- <component :is="social.files[0]?.img || IconInstagram" /> -->
       </a>
     </div>
 
@@ -56,7 +54,7 @@ const { socials, stats } = storeToRefs(home);
           </div>
         </div>
 
-        <BaseButton variant="white" class="h-12 px-8" >
+        <BaseButton variant="white" class="h-12 px-8">
           <IconMessage class="shrink-0" />
           <span class="text-base">Янги сонга мақола юбориш</span>
         </BaseButton>
@@ -73,7 +71,6 @@ const { socials, stats } = storeToRefs(home);
           </div>
           <div class="text-xs sm:text-[16px] text-white/80 mt-1.5">
             {{ item.title }}
-              <!-- Муаллифлар -->
           </div>
         </div>
       </div>

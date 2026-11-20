@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconTrend from './icons/IconTrend.vue'
+import IconTrend from '@/shared/ui/icons/IconTrend.vue'
 
 interface Props {
   title: string
@@ -32,4 +32,3 @@ defineProps<Props>()
     </div>
   </div>
 </template>
-

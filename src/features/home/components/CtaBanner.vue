@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import IconBook from './icons/IconBook.vue';
-import IconDownload from './icons/IconDownload.vue';
-import BaseButton from './ui/BaseButton.vue';
-
+import IconBook from '@/shared/ui/icons/IconBook.vue'
+import IconDownload from '@/shared/ui/icons/IconDownload.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
 </script>
 
 <template>

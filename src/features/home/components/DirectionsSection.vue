@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import IconTrend from './icons/IconTrend.vue';
-import BaseButton from './ui/BaseButton.vue';
-import { homeStore } from '@/stores/home.ts';
-import { storeToRefs } from 'pinia';
+import IconTrend from '@/shared/ui/icons/IconTrend.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import { homeStore } from '@/features/home/stores/home'
+import { storeToRefs } from 'pinia'
 
-const home = homeStore();
-const { categories } = storeToRefs(home);
-
+const home = homeStore()
+const { categories } = storeToRefs(home)
 </script>
 
 <template>
@@ -22,13 +21,13 @@ const { categories } = storeToRefs(home);
 
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div
-        v-for="(item, idx) in categories"
-        :key="idx"
+        v-for="item in categories"
+        :key="item.id"
         class="group bg-brand-light hover:bg-brand-light/80 transition-colors rounded-[14px] p-5 flex flex-col justify-between cursor-pointer"
       >
         <div class="flex items-start justify-between">
           <div class="w-14 h-14 rounded-[10px] bg-white/15 flex items-center justify-center text-white">
-            <img :src="item.files[0]?.img" alt="">
+            <IconTrend />
           </div>
 
           <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-medium">

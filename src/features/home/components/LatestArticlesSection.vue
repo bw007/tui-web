@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import IconCalendar from './icons/IconCalendar.vue';
-import IconEye from './icons/IconEye.vue';
-import BaseButton from './ui/BaseButton.vue';
-import { storeToRefs } from 'pinia';
-import { homeStore } from '@/stores/home.ts';
+import IconCalendar from '@/shared/ui/icons/IconCalendar.vue'
+import IconEye from '@/shared/ui/icons/IconEye.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import { storeToRefs } from 'pinia'
+import { homeStore } from '@/features/home/stores/home'
 
-const home = homeStore();
-const { posts } = storeToRefs(home);
-
+const home = homeStore()
+const { posts } = storeToRefs(home)
 </script>
 
 <template>
@@ -50,12 +49,10 @@ const { posts } = storeToRefs(home);
               DOI: {{ article.alias }}
             </a>
 
-            <p v-html="article.content" class="text-sm text-slate-600 line-clamp-2">
-              
-            </p>
+            <p v-html="article.content" class="text-sm text-slate-600 line-clamp-2"></p>
 
             <div class="text-sm text-slate-600">
-              <span>{{ article.authors.map(a => a.title).join(", ") }}</span>
+              <span>{{ article.authors.map(a => a.title).join(', ') }}</span>
             </div>
           </div>
 
@@ -74,17 +71,15 @@ const { posts } = storeToRefs(home);
 
             <div class="flex items-center gap-2">
               <a :href="article.files" download target="_blank" rel="noopener noreferrer">
-                <BaseButton download size="md" class="px-4">
+                <BaseButton size="md" class="px-4">
                   Ўқиш
                 </BaseButton>
               </a>
-              
               <a :href="article.files" download target="_blank" rel="noopener noreferrer">
                 <BaseButton size="md" class="px-6" variant="outline">
                   Юклаб олиш
                 </BaseButton>
               </a>
-              
             </div>
           </div>
         </article>

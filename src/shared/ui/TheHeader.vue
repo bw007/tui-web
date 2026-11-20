@@ -1,18 +1,31 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import IconDown from './icons/IconDown.vue'
-import IconMail from './icons/IconMail.vue'
-import IconPhone from './icons/IconPhone.vue'
-import BaseButton from './ui/BaseButton.vue'
-import IconSearch from './icons/IconSearch.vue'
-import IconMessageWhite from './icons/IconMessageWhite.vue'
-import IconUser from './icons/IconUser.vue'
-import { homeStore } from '@/stores/home.ts'
+import IconDown from '@/shared/ui/icons/IconDown.vue'
+import IconMail from '@/shared/ui/icons/IconMail.vue'
+import IconPhone from '@/shared/ui/icons/IconPhone.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import IconSearch from '@/shared/ui/icons/IconSearch.vue'
+import IconMessageWhite from '@/shared/ui/icons/IconMessageWhite.vue'
+import IconUser from '@/shared/ui/icons/IconUser.vue'
+import { homeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = homeStore();
-const { menus} = storeToRefs(home);
+interface NavItem {
+  label: string
+  route: string
+  hasDropdown: boolean
+}
+
+const home = homeStore()
+const { menus } = storeToRefs(home)
+
+const navItems: NavItem[] = [
+  { label: 'Журнал ҳақида', route: '/about', hasDropdown: true },
+  { label: 'Муаллифлар учун', route: '/authors', hasDropdown: true },
+  { label: 'Рецензентлар учун', route: '/reviewers', hasDropdown: true },
+  { label: 'Боғланиш', route: '/contact', hasDropdown: false },
+]
 
 const languages = [
   { code: 'uz', label: 'Ўзбекча' },
@@ -55,6 +68,7 @@ const selectedLang = ref(languages[0])
         </button>
       </div>
     </div>
+
     <div class="container mx-auto px-4.5 h-25.5 flex items-center justify-between gap-4">
       <RouterLink to="/" class="shrink-0 flex items-center">
         <img src="@/assets/logo.svg" class="w-auto" />
@@ -62,24 +76,24 @@ const selectedLang = ref(languages[0])
 
       <nav class="hidden lg:flex items-center gap-4 text-[15px] font-medium text-slate">
         <div
-          v-for="item in menus"
-          :key="'item'"
+          v-for="item in navItems"
+          :key="item.label"
           class="py-2"
         >
           <RouterLink
-            :to="item.alias"
+            :to="item.route"
             class="flex items-center gap-1 font-medium hover:text-brand transition-colors"
             active-class="text-brand"
           >
-            <span>{{ item.title }}</span>
-            <IconDown v-if="item.children.length" class="mx-1 transition-transform duration-200" />
+            <span>{{ item.label }}</span>
+            <IconDown v-if="item.hasDropdown" class="mx-1 transition-transform duration-200" />
           </RouterLink>
         </div>
       </nav>
 
       <div class="flex items-center gap-3">
         <button
-          variant="outline"
+          type="button"
           aria-label="Қидириш"
           class="flex items-center mr-2 justify-center rounded-lg hover:opacity-75 transition cursor-pointer"
         >

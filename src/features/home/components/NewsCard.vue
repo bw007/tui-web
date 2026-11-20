@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconCalendar from './icons/IconCalendar.vue'
-import IconEye from './icons/IconEye.vue'
+import IconCalendar from '@/shared/ui/icons/IconCalendar.vue'
+import IconEye from '@/shared/ui/icons/IconEye.vue'
 
 interface Props {
   title: string
@@ -42,4 +42,3 @@ defineProps<Props>()
     </div>
   </div>
 </template>
-

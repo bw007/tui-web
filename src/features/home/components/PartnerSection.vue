@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import BaseButton from './ui/BaseButton.vue';
-import { homeStore } from '@/stores/home.ts';
-import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import { homeStore } from '@/features/home/stores/home'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 
-const home = homeStore();
-const { partners } = storeToRefs(home);
+const home = homeStore()
+const { partners } = storeToRefs(home)
 
 onMounted(() => {
-  home.getPartners().then((res) => {
-    console.log(res);
-  });
+  home.getPartners()
 })
 </script>
 

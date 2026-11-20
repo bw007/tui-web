@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import TheHeader from './components/TheHeader.vue';
-import TheFooter from './components/TheFooter.vue';
-import BaseButton from './components/ui/BaseButton.vue';
-import IconChat from './components/icons/IconChat.vue';
-import { onMounted } from 'vue';
-import Aos from 'aos';
+import TheHeader from '@/shared/ui/TheHeader.vue'
+import TheFooter from '@/shared/ui/TheFooter.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
+import IconChat from '@/shared/ui/icons/IconChat.vue'
+import { onMounted } from 'vue'
+import Aos from 'aos'
 
 onMounted(() => {
   Aos.init({
