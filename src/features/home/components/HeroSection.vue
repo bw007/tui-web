@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import IconMessage from '@/shared/ui/icons/IconMessage.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = homeStore()
+const home = useHomeStore()
 const { socials, stats } = storeToRefs(home)
 </script>
 

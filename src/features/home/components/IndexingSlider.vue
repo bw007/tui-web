@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import IconDown from '@/shared/ui/icons/IconDown.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = homeStore()
+const home = useHomeStore()
 const { bases } = storeToRefs(home)
 </script>
 

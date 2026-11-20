@@ -3,9 +3,9 @@ import IconCalendar from '@/shared/ui/icons/IconCalendar.vue'
 import IconEye from '@/shared/ui/icons/IconEye.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
 import { storeToRefs } from 'pinia'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 
-const home = homeStore()
+const home = useHomeStore()
 const { posts } = storeToRefs(home)
 </script>
 

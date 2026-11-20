@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import BaseButton from '@/shared/ui/BaseButton.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 
-const home = homeStore()
+const home = useHomeStore()
 const { partners } = storeToRefs(home)
 
 onMounted(() => {

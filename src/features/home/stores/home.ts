@@ -3,9 +3,10 @@ import { apiStore } from '@/features/home/api/api'
 import { ref, type Ref } from 'vue'
 import type { Category, Menu, News, Partner, Post, Social, Stat } from '@/features/home/types'
 
-export const homeStore = defineStore('weatherStore', () => {
+export const useHomeStore = defineStore('homeStore', () => {
   const api = apiStore()
   const menus = ref<Menu[] | []>([])
+  const pageData = ref();
   const news = ref<News[] | []>([])
   const posts = ref<Post[] | []>([])
   const partners = ref<Partner[] | []>([])
@@ -22,6 +23,7 @@ export const homeStore = defineStore('weatherStore', () => {
   }
 
   const getMenu = () => setData('menu', menus)
+  const getPageData = () => setData('pages', pageData)
   const getNews = (params?: any) => setData('news/list/news', news, params)
   const getPosts = (params?: any) => setData('posts', posts, params)
   const getPartners = () => setData('main/partners', partners)
@@ -31,8 +33,8 @@ export const homeStore = defineStore('weatherStore', () => {
   const getBases = () => setData('main/bases', bases)
 
   return {
-    getMenu, getNews, getPosts, getPartners,
+    getMenu, getPageData, getNews, getPosts, getPartners,
     getSocials, getStats, getCategories, getBases,
-    news, posts, partners, socials, stats, categories, bases, menus
+    news, posts, partners, socials, stats, categories, bases, menus, pageData
   }
 })

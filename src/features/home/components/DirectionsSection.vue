@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import IconTrend from '@/shared/ui/icons/IconTrend.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = homeStore()
+const home = useHomeStore()
 const { categories } = storeToRefs(home)
 </script>
 

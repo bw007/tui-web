@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import BaseButton from '@/shared/ui/BaseButton.vue'
 import NewsCard from '@/features/home/components/NewsCard.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = homeStore()
+const home = useHomeStore()
 const { news } = storeToRefs(home)
 </script>
 

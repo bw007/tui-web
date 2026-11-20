@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import IconDown from '@/shared/ui/icons/IconDown.vue'
 import IconMail from '@/shared/ui/icons/IconMail.vue'
@@ -8,32 +7,13 @@ import BaseButton from '@/shared/ui/BaseButton.vue'
 import IconSearch from '@/shared/ui/icons/IconSearch.vue'
 import IconMessageWhite from '@/shared/ui/icons/IconMessageWhite.vue'
 import IconUser from '@/shared/ui/icons/IconUser.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
-interface NavItem {
-  label: string
-  route: string
-  hasDropdown: boolean
-}
-
-const home = homeStore()
+const home = useHomeStore()
 const { menus } = storeToRefs(home)
 
-const navItems: NavItem[] = [
-  { label: 'Журнал ҳақида', route: '/about', hasDropdown: true },
-  { label: 'Муаллифлар учун', route: '/authors', hasDropdown: true },
-  { label: 'Рецензентлар учун', route: '/reviewers', hasDropdown: true },
-  { label: 'Боғланиш', route: '/contact', hasDropdown: false },
-]
-
-const languages = [
-  { code: 'uz', label: 'Ўзбекча' },
-  { code: 'ru', label: 'Русский' },
-  { code: 'en', label: 'English' },
-]
-
-const selectedLang = ref(languages[0])
 </script>
 
 <template>
@@ -58,14 +38,7 @@ const selectedLang = ref(languages[0])
           </a>
         </div>
 
-        <button
-          type="button"
-          class="flex items-center gap-2 py-1 px-2 rounded-md hover:bg-white/60 transition cursor-pointer"
-        >
-          <img src="@/assets/flag.png" class="w-5 h-5 rounded-full shrink-0" />
-          <span class="font-medium">{{ selectedLang!.label }}</span>
-          <IconDown class="text-brand transition-transform duration-200" />
-        </button>
+        <LanguageSwitcher />
       </div>
     </div>
 
@@ -76,17 +49,17 @@ const selectedLang = ref(languages[0])
 
       <nav class="hidden lg:flex items-center gap-4 text-[15px] font-medium text-slate">
         <div
-          v-for="item in navItems"
-          :key="item.label"
+          v-for="item in menus"
+          :key="item.title"
           class="py-2"
         >
           <RouterLink
-            :to="item.route"
+            :to="item.alias"
             class="flex items-center gap-1 font-medium hover:text-brand transition-colors"
             active-class="text-brand"
           >
-            <span>{{ item.label }}</span>
-            <IconDown v-if="item.hasDropdown" class="mx-1 transition-transform duration-200" />
+            <span>{{ item.title }}</span>
+            <IconDown v-if="item.children.length" class="mx-1 transition-transform duration-200" />
           </RouterLink>
         </div>
       </nav>

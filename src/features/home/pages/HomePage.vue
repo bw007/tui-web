@@ -7,20 +7,21 @@ import IndexingSlider from '@/features/home/components/IndexingSlider.vue'
 import LatestArticlesSection from '@/features/home/components/LatestArticlesSection.vue'
 import NewsSection from '@/features/home/components/NewsSection.vue'
 import PartnerSection from '@/features/home/components/PartnerSection.vue'
-import { homeStore } from '@/features/home/stores/home'
+import { useHomeStore } from '@/features/home/stores/home'
 import { onMounted } from 'vue'
 
-const home = homeStore()
+const homeStore = useHomeStore()
 
 onMounted(async () => {
-  await home.getMenu()
-  await home.getCategories({ limit: 8, offset: 0 })
-  await home.getNews({ limit: 5, offset: 0 })
-  await home.getPosts({ limit: 6, offset: 0 })
-  await home.getPartners()
-  await home.getStats()
-  await home.getSocials()
-  await home.getBases()
+  await homeStore.getMenu()
+  await homeStore.getPageData()
+  await homeStore.getCategories({ limit: 8, offset: 0 })
+  await homeStore.getNews({ limit: 5, offset: 0 })
+  await homeStore.getPosts({ limit: 6, offset: 0 })
+  await homeStore.getPartners()
+  await homeStore.getStats()
+  await homeStore.getSocials()
+  await homeStore.getBases()
 })
 </script>
 
