@@ -16,4 +16,8 @@ export default {
     allSurvey: "Barcha so'rovnomalarni ko'rish",
     partner: "Hamkor bo'lish",
   },
+  sidebar: {
+    menu: "Menyu",
+    socials: "Ijtimoiy tarmoqlar:",
+  },
 };

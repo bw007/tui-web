@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import CtaBanner from '@/features/home/components/CtaBanner.vue'
-import DirectionsSection from '@/features/home/components/DirectionsSection.vue'
-import FormSection from '@/features/home/components/FormSection.vue'
-import HeroSection from '@/features/home/components/HeroSection.vue'
-import IndexingSlider from '@/features/home/components/IndexingSlider.vue'
-import LatestArticlesSection from '@/features/home/components/LatestArticlesSection.vue'
-import NewsSection from '@/features/home/components/NewsSection.vue'
-import PartnerSection from '@/features/home/components/PartnerSection.vue'
-import { useHomeStore } from '@/features/home/stores/home'
 import { onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import CtaBanner from '@/features/home/components/CtaBanner.vue'
+import FormSection from '@/features/home/components/FormSection.vue'
+import HeroSection from '@/features/home/components/HeroSection.vue'
+import IndexingSlider from '@/features/home/components/IndexingSlider.vue'
+import NewsSection from '@/features/home/components/NewsSection.vue'
+import PartnerSection from '@/features/home/components/PartnerSection.vue'
+import PostsSection from '../components/PostsSection.vue'
+import CategorySection from '../components/CategorySection.vue'
+
+import { useHomeStore } from '@/features/home/stores/home'
+
 const { locale } = useI18n();
-const homeStore = useHomeStore()
+const homeStore = useHomeStore();
 
 const fetchHomeData = async () => {
   await Promise.allSettled([
@@ -31,10 +33,10 @@ watch(locale, fetchHomeData)
 
 <template>
   <HeroSection />
-  <DirectionsSection />
+  <CategorySection />
   <CtaBanner />
   <NewsSection />
-  <LatestArticlesSection />
+  <PostsSection />
   <IndexingSlider />
   <FormSection />
   <PartnerSection />

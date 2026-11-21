@@ -16,4 +16,8 @@ export default {
     allSurvey: "Барча сўровномаларни кўриш",
     partner: "Ҳамкор бўлиш",
   },
+  sidebar: {
+    menu: "Меню",
+    socials: "Ижтимоий тармоқлар:",
+  },
 };

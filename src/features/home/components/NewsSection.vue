@@ -4,8 +4,8 @@ import NewsCard from '@/features/home/components/NewsCard.vue'
 import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 
-const home = useHomeStore()
-const { news } = storeToRefs(home)
+const homeStore = useHomeStore()
+const { news } = storeToRefs(homeStore)
 </script>
 
 <template>

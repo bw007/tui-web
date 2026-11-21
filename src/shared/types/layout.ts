@@ -5,9 +5,10 @@ export interface Menu {
   children: any[];
 }
 export interface Social {
-  id: number
-  title: string
+  id: number;
+  title: string;
+  options?: string;
   files: {
-    img: string
-  }[]
+    img: string;
+  }[];
 }

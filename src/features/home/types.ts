@@ -11,6 +11,7 @@ export interface Post {
   files: string;
   alias: string;
   created_at: string;
+  download: number;
   category: {
     title: string;
   }

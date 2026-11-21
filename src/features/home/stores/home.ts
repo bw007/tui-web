@@ -21,6 +21,26 @@ export const useHomeStore = defineStore('home', () => {
     posts.value = res.data
   }
 
+  const downloadPost = async (post: Post) => {
+    const res = await homeApi.downloadPost({ id: post.id })
+    const blob = res.data ?? res
+
+    const url = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }))
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${post.title}.pdf`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+
+    posts.value = posts.value.map(p => {
+      if (p.id == post.id) return { ...p, download: post.download + 1 }
+      
+      return p
+    })
+  }
+
   const getPartners = async () => {
     const res = await homeApi.getPartners()
     partners.value = res.data
@@ -48,6 +68,8 @@ export const useHomeStore = defineStore('home', () => {
     stats,
     categories,
     bases,
+
+    downloadPost,
     getNews,
     getPosts,
     getPartners,
