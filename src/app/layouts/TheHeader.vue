@@ -25,9 +25,7 @@ const { menus, pageData } = storeToRefs(layoutStore)
     <div class="bg-surface text-navy text-[14px] border-b border-gray-100">
       <div class="container mx-auto px-4.5 h-13 flex items-center justify-between">
 
-        <!-- xl+ da: email va tel; kichikda: hamburger -->
         <div class="flex items-center gap-6 text-[17px]">
-          <!-- Email + Phone: faqat xl+ da -->
           <a
             href="mailto:info@tiuglobal.uz"
             class="hidden xl:flex items-center gap-1.5 hover:text-brand transition-colors"
@@ -43,7 +41,6 @@ const { menus, pageData } = storeToRefs(layoutStore)
             <span>{{ pageData?.phone }}</span>
           </a>
 
-          <!-- Hamburger: faqat xl dan kichikda -->
           <button
             type="button"
             aria-label="Menuni ochish"

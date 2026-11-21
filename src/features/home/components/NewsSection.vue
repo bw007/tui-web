@@ -23,10 +23,7 @@ const { news } = storeToRefs(homeStore)
       <NewsCard
         v-for="item in news"
         :key="item.id"
-        :title="item.title"
-        :image="item.files"
-        :date="item.created_at"
-        :views="item.views"
+        :item="item"
       />
     </div>
 
