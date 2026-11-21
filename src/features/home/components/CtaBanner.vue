@@ -36,7 +36,7 @@ import BaseButton from '@/shared/ui/BaseButton.vue'
 
         <BaseButton>
           <IconDownload />
-          <span>Jurnalni yuklab olish</span>
+          <span>{{ $t('buttons.downloadJournal') }}</span>
         </BaseButton>
       </div>
     </div>

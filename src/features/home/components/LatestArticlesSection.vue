@@ -4,9 +4,12 @@ import IconEye from '@/shared/ui/icons/IconEye.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
 import { storeToRefs } from 'pinia'
 import { useHomeStore } from '@/features/home/stores/home'
+import { useLayoutStore } from '@/app/stores/layout'
 
-const home = useHomeStore()
-const { posts } = storeToRefs(home)
+const homeStore = useHomeStore()
+const { posts } = storeToRefs(homeStore)
+const layoutStore = useLayoutStore();
+const { pageData } = storeToRefs(layoutStore)
 </script>
 
 <template>
@@ -14,10 +17,10 @@ const { posts } = storeToRefs(home)
     <div class="container mx-auto px-4.5 flex flex-col gap-10 items-center">
       <div class="flex flex-col gap-2 text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-navy leading-tight">
-          Охирги сон мақолалари
+          {{ pageData?.latest_news_article }}
         </h2>
         <p class="text-slate text-base sm:text-lg">
-          Журналнинг № 12 (2024) сонида нашр этилган илмий мақолалар
+          {{ pageData?.latest_news_article_desc }}
         </p>
       </div>
 
@@ -30,7 +33,7 @@ const { posts } = storeToRefs(home)
           <div class="flex flex-col gap-3">
             <div class="flex items-center justify-between gap-2">
               <span class="px-3 py-1 rounded-full bg-sky-100 h-7 text-blue-500 text-sm flex items-center font-medium">
-                {{ article.category.title }}
+                {{ article.category?.title }}
               </span>
               <span class="text-sm text-slate-500">
                 {{ article.page }}
@@ -42,7 +45,7 @@ const { posts } = storeToRefs(home)
             </h3>
 
             <a
-              :href="article.issue.title"
+              :href="article.issue?.title"
               target="_blank"
               class="text-sm text-sky-800 hover:underline"
             >
@@ -52,7 +55,7 @@ const { posts } = storeToRefs(home)
             <p v-html="article.content" class="text-sm text-slate-600 line-clamp-2"></p>
 
             <div class="text-sm text-slate-600">
-              <span>{{ article.authors.map(a => a.title).join(', ') }}</span>
+              <span>{{ article.authors?.map(a => a.title).join(', ') }}</span>
             </div>
           </div>
 
@@ -70,14 +73,14 @@ const { posts } = storeToRefs(home)
             </div>
 
             <div class="flex items-center gap-2">
-              <a :href="article.files" download target="_blank" rel="noopener noreferrer">
+              <a :href="article.files" download rel="noopener noreferrer">
                 <BaseButton size="md" class="px-4">
-                  Ўқиш
+                  {{ $t('buttons.read') }}
                 </BaseButton>
               </a>
               <a :href="article.files" download target="_blank" rel="noopener noreferrer">
                 <BaseButton size="md" class="px-6" variant="outline">
-                  Юклаб олиш
+                  {{ $t('buttons.download') }}
                 </BaseButton>
               </a>
             </div>
@@ -86,7 +89,7 @@ const { posts } = storeToRefs(home)
       </div>
 
       <BaseButton>
-        Барча мақолаларни кўриш
+        {{ $t('buttons.allArticles') }}
       </BaseButton>
     </div>
   </section>

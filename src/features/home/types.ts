@@ -1,10 +1,3 @@
-export interface Menu {
-  id: number;
-  title: string;
-  alias: string;
-  children: any[];
-}
-
 export interface News {
   id: number;
   views: number;
@@ -36,14 +29,16 @@ export interface Post {
 export interface Partner {
   id: number
   title: string
+  options?: string
   files: {
     img: string
   }[]
 }
 
-export interface Social {
+export interface Bases {
   id: number
   title: string
+  options?: string
   files: {
     img: string
   }[]
@@ -63,4 +58,30 @@ export interface Category {
   files: {
     img: string
   }[]
+}
+
+export interface PageData {
+  index_bases: string
+  work_time: string
+  iframe_footer: string
+  latest_news_article: string
+  latest_news: string
+  juranal_cat_desc: string
+  juranal_cat_t: string
+  header_desc: string
+  index_bases_desc: string
+  latest_news_desc: string
+  header_button: string
+  partners_desc: string
+  partners: string
+  index_bases_desc2: string
+  phone: string
+  address: string
+  email: string
+  header_t: string
+  header_date: string
+  latest_news_article_desc: string
+  header_num: string
+  issn: string
+  footer_rights: string
 }

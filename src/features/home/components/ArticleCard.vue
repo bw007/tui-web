@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import IconCalendar from './icons/IconCalendar.vue'
-import IconEye from './icons/IconEye.vue'
-import BaseButton from './ui/BaseButton.vue'
+import IconCalendar from '@/shared/ui/icons/IconCalendar.vue'
+import IconEye from '@/shared/ui/icons/IconEye.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
 
 interface Props {
   category: string
@@ -66,13 +66,12 @@ defineProps<Props>()
 
       <div class="flex items-center gap-2">
         <BaseButton size="md" class="px-4">
-          Ўқиш
+          {{ $t('buttons.read') }}
         </BaseButton>
         <BaseButton size="md" class="px-6" variant="outline">
-          Юклаб олиш
+          {{ $t('buttons.download') }}
         </BaseButton>
       </div>
     </div>
   </article>
 </template>
-

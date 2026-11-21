@@ -42,7 +42,7 @@ import BaseButton from '@/shared/ui/BaseButton.vue';
               </label>
             </div>
             <BaseButton class="w-64">
-              Мурожаатни юбориш
+              {{ $t('buttons.sendAppeal') }}
             </BaseButton>
           </div>
         </form>
@@ -88,7 +88,7 @@ import BaseButton from '@/shared/ui/BaseButton.vue';
           </div>
         </form>
         <BaseButton variant="outline">
-          <span class="text-brand">Барча сўровномаларни кўриш</span>
+          <span class="text-brand">{{ $t('buttons.allSurvey') }}</span>
         </BaseButton>
       </div>
     </div>

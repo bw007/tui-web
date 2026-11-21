@@ -8,21 +8,25 @@ import LatestArticlesSection from '@/features/home/components/LatestArticlesSect
 import NewsSection from '@/features/home/components/NewsSection.vue'
 import PartnerSection from '@/features/home/components/PartnerSection.vue'
 import { useHomeStore } from '@/features/home/stores/home'
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { locale } = useI18n();
 const homeStore = useHomeStore()
 
-onMounted(async () => {
-  await homeStore.getMenu()
-  await homeStore.getPageData()
-  await homeStore.getCategories({ limit: 8, offset: 0 })
-  await homeStore.getNews({ limit: 5, offset: 0 })
-  await homeStore.getPosts({ limit: 6, offset: 0 })
-  await homeStore.getPartners()
-  await homeStore.getStats()
-  await homeStore.getSocials()
-  await homeStore.getBases()
-})
+const fetchHomeData = async () => {
+  await Promise.allSettled([
+    homeStore.getCategories({ limit: 8, offset: 0 }),
+    homeStore.getNews({ limit: 5, offset: 0 }),
+    homeStore.getPosts({ limit: 6, offset: 0 }),
+    homeStore.getPartners(),
+    homeStore.getStats(),
+    homeStore.getBases()
+  ])
+}
+
+onMounted(fetchHomeData)
+watch(locale, fetchHomeData)
 </script>
 
 <template>

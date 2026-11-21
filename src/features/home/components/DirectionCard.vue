@@ -18,7 +18,7 @@ defineProps<Props>()
       </div>
 
       <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-medium">
-        {{ count }} мақола
+        {{ count }} {{ $t('article') }}
       </span>
     </div>
 

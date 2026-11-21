@@ -7,12 +7,12 @@ import BaseButton from '@/shared/ui/BaseButton.vue'
 import IconSearch from '@/shared/ui/icons/IconSearch.vue'
 import IconMessageWhite from '@/shared/ui/icons/IconMessageWhite.vue'
 import IconUser from '@/shared/ui/icons/IconUser.vue'
-import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import { useLayoutStore } from '../stores/layout.ts'
 
-const home = useHomeStore()
-const { menus } = storeToRefs(home)
+const layoutStore = useLayoutStore()
+const { menus, pageData } = storeToRefs(layoutStore)
 
 </script>
 
@@ -26,7 +26,7 @@ const { menus } = storeToRefs(home)
             class="flex items-center gap-1.5 hover:text-brand transition-colors"
           >
             <IconMail class=" text-brand shrink-0" />
-            <span>info@tiuglobal.uz</span>
+            <span>{{ pageData?.email }}</span>
           </a>
 
           <a
@@ -34,7 +34,7 @@ const { menus } = storeToRefs(home)
             class="flex items-center gap-1.5 hover:text-brand transition-colors"
           >
             <IconPhone class="text-brand shrink-0" />
-            <span>+998 71 244-44-44</span>
+            <span>{{ pageData?.phone }}</span>
           </a>
         </div>
 
@@ -75,7 +75,7 @@ const { menus } = storeToRefs(home)
 
         <BaseButton variant="primary">
           <IconMessageWhite class="shrink-0 mx-0.5" />
-          <span class="font-semibold">Мақола юбориш</span>
+          <span class="font-semibold">{{ $t('buttons.sendIssue') }}</span>
         </BaseButton>
 
         <BaseButton

@@ -1,40 +1,58 @@
 import { defineStore } from 'pinia'
-import { apiStore } from '@/features/home/api/api'
-import { ref, type Ref } from 'vue'
-import type { Category, Menu, News, Partner, Post, Social, Stat } from '@/features/home/types'
+import { ref } from 'vue'
+import { homeApi } from '../api'
+import type { Bases, Category, News, Partner, Post, Stat } from '../types'
 
-export const useHomeStore = defineStore('homeStore', () => {
-  const api = apiStore()
-  const menus = ref<Menu[] | []>([])
-  const pageData = ref();
-  const news = ref<News[] | []>([])
-  const posts = ref<Post[] | []>([])
-  const partners = ref<Partner[] | []>([])
-  const socials = ref<Social[] | []>([])
-  const stats = ref<Stat[] | []>([])
-  const categories = ref<Category[] | []>([])
-  const bases = ref()
+export const useHomeStore = defineStore('home', () => {
+  const news = ref<News[]>([])
+  const posts = ref<Post[]>([])
+  const partners = ref<Partner[]>([])
+  const stats = ref<Stat[]>([])
+  const categories = ref<Category[]>([])
+  const bases = ref<Bases[]>([])
 
-  const setData = async (url: string, target: Ref<any[]>, params?: any) => {
-    const res = await api.get({ url, params })
-    if (res && res.status === 200) {
-      target.value = res.data.data
-    }
+  const getNews = async (params?: any) => {
+    const res = await homeApi.getNews(params)
+    news.value = res.data
   }
 
-  const getMenu = () => setData('menu', menus)
-  const getPageData = () => setData('pages', pageData)
-  const getNews = (params?: any) => setData('news/list/news', news, params)
-  const getPosts = (params?: any) => setData('posts', posts, params)
-  const getPartners = () => setData('main/partners', partners)
-  const getSocials = () => setData('main/social', socials)
-  const getStats = () => setData('main/stats', stats)
-  const getCategories = (params?: any) => setData('main/category', categories, params)
-  const getBases = () => setData('main/bases', bases)
+  const getPosts = async (params?: any) => {
+    const res = await homeApi.getPosts(params)
+    posts.value = res.data
+  }
+
+  const getPartners = async () => {
+    const res = await homeApi.getPartners()
+    partners.value = res.data
+  }
+
+  const getStats = async () => {
+    const res = await homeApi.getStats()
+    stats.value = res.data
+  }
+
+  const getCategories = async (params: any) => {
+    const res = await homeApi.getCategories(params)
+    categories.value = res.data
+  }
+
+  const getBases = async () => {
+    const res = await homeApi.getBases()
+    bases.value = res.data
+  }
 
   return {
-    getMenu, getPageData, getNews, getPosts, getPartners,
-    getSocials, getStats, getCategories, getBases,
-    news, posts, partners, socials, stats, categories, bases, menus, pageData
+    news,
+    posts,
+    partners,
+    stats,
+    categories,
+    bases,
+    getNews,
+    getPosts,
+    getPartners,
+    getStats,
+    getCategories,
+    getBases
   }
 })

@@ -31,7 +31,7 @@ const { news } = storeToRefs(home)
     </div>
 
     <BaseButton>
-      Барча янгиликларни кўриш
+      {{ $t('buttons.allNews') }}
     </BaseButton>
   </section>
 </template>

@@ -1,11 +1,13 @@
 import { createI18n } from 'vue-i18n'
-
+import ozLatin from '@/locales/oz-latin/home'
 import uzCyril from '@/locales/uz-cyril/home'
 
 export const i18n = createI18n({
-  locale: 'uz-cyril',
-  fallbackLocale: 'uz-cyril',
+  legacy: false,
+  locale: localStorage.getItem('lang') || 'oz',
+  fallbackLocale: 'oz',
   messages: {
-    'uz-cyril': uzCyril
+    oz: ozLatin,
+    uz: uzCyril
   }
 })

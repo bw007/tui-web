@@ -3,19 +3,22 @@ import IconTrend from '@/shared/ui/icons/IconTrend.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
 import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
+import { useLayoutStore } from '@/app/stores/layout'
 
-const home = useHomeStore()
-const { categories } = storeToRefs(home)
+const homeStore = useHomeStore()
+const layoutStore = useLayoutStore()
+const { categories } = storeToRefs(homeStore)
+const { pageData } = storeToRefs(layoutStore);
 </script>
 
 <template>
   <section class="container font-sf mx-auto px-4.5 py-20 flex flex-col gap-10 items-center">
     <div class="flex flex-col gap-3 text-center">
       <h2 class="text-[36px] font-semibold tracking-tight text-navy leading-tight">
-        Журнал йўналишлари ва бўлимлари
+        {{ pageData?.juranal_cat_t }}
       </h2>
       <p class="text-slate text-lg">
-        Турли фан соҳалари бўйича илмий тадқиқотларингизни нашр қилинг
+        {{ pageData?.juranal_cat_desc }}
       </p>
     </div>
 
@@ -31,7 +34,7 @@ const { categories } = storeToRefs(home)
           </div>
 
           <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-medium">
-            {{ item.posts }} мақола
+            {{ item.posts }} {{ $t('article') }}
           </span>
         </div>
 
@@ -47,7 +50,7 @@ const { categories } = storeToRefs(home)
     </div>
 
     <BaseButton>
-      Барча категорияларни кўриш
+      {{ $t('buttons.category') }}
     </BaseButton>
   </section>
 </template>

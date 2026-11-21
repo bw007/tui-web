@@ -3,9 +3,12 @@ import IconMessage from '@/shared/ui/icons/IconMessage.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
 import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
+import { useLayoutStore } from '@/app/stores/layout'
 
-const home = useHomeStore()
-const { socials, stats } = storeToRefs(home)
+const homeStore = useHomeStore()
+const layoutStore = useLayoutStore()
+const { stats } = storeToRefs(homeStore)
+const { socials, pageData } = storeToRefs(layoutStore);
 </script>
 
 <template>
@@ -25,20 +28,20 @@ const { socials, stats } = storeToRefs(home)
 
     <div class="container px-4.5 mx-auto gap-8 mb-1.25 flex flex-col items-center text-center">
       <h1 class="text-[28px] -mb-2 sm:text-[36px] lg:text-[48px] font-medium font-sf tracking-tight max-w-7xl">
-        Тошкент Халқаро Университети Илмий онлайн журнали
+        {{ pageData?.header_t }}
       </h1>
       <p class="text-sm sm:text-xl text-white/85 max-w-2xl">
-        Замонавий тадқиқотлар ва инновацион ғояларингизни дунёга етказинг
+        {{ pageData?.header_desc }}
       </p>
 
       <div class="w-full max-w-2xl flex flex-col items-center gap-4 bg-white/10 border border-white/20 rounded-[10px] p-6.25">
         <div class="flex items-center justify-center">
           <div class="bg-white/12 rounded-full py-3.75 px-5.5 text-center">
             <span class="block text-xs md:text-sm text-white leading-tight">
-              Энг охирги сон
+              {{ $t('hero.issueTitle') }}
             </span>
             <span class="block text-[20px] sm:text-[22px] lg:text-3xl leading-snug mt-0.5">
-              № 12 (2025)
+              {{ pageData?.header_num }}
             </span>
           </div>
 
@@ -46,17 +49,17 @@ const { socials, stats } = storeToRefs(home)
 
           <div class="text-left">
             <span class="block text-xs md:text-sm text-white/80 leading-tight">
-              Нашр санаси
+              {{ $t('hero.releaseTitle') }}
             </span>
             <span class="block text-sm md:text-[18px] font-medium">
-              Ноябрь 2025
+              {{ pageData?.header_date }}
             </span>
           </div>
         </div>
 
         <BaseButton variant="white" class="h-12 px-8">
           <IconMessage class="shrink-0" />
-          <span class="text-base">Янги сонга мақола юбориш</span>
+          <span class="text-base">{{ pageData?.header_button }}</span>
         </BaseButton>
       </div>
 

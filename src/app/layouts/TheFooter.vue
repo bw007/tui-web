@@ -19,7 +19,7 @@ const journalLinks = [
 const authorLinks = [
   { label: 'Намунавий шакл', to: '/authors/template' },
   { label: 'Тақриз олиш бўйича йўриқнома', to: '/authors/review-guide' },
-  { label: 'Тўлов бўйича реквизитлар', to: '/authors/payment' },
+  { label: 'Тўлов бўйича реквизитlar', to: '/authors/payment' },
   { label: 'Этик қоидалар', to: '/authors/ethics' },
   { label: 'Плагиат сиёсати', to: '/authors/plagiarism' },
 ]
@@ -76,30 +76,37 @@ const reviewerLinks = [
             <IconLocation class="shrink-0 mt-0.5" />
             <span>Тошкент шаҳри, Абдулла Қодирий кўчаси, 11</span>
           </a>
-          <a href="tel:+998712444444" class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
+          <a href="tel:+998712444444"
+            class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
             <IconPhone class="shrink-0" />
             <span>+998 71 244-44-44</span>
           </a>
-          <a href="mailto:info@tiuglobal.uz" class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
+          <a href="mailto:info@tiuglobal.uz"
+            class="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors">
             <IconMail class="shrink-0" />
             <span>info@tiuglobal.uz</span>
           </a>
         </div>
 
         <div class="flex items-center gap-3 mt-6">
-          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
-            <IconInstagram />
-          </a>
-          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
-            <IconTelegram />
-          </a>
-          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#"
+            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconLinkedin />
           </a>
-          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#"
+            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+            <IconInstagram />
+          </a>
+          <a href="#"
+            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+            <IconTelegram />
+          </a>
+          <a href="#"
+            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconX />
           </a>
-          <a href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
+          <a href="#"
+            class="w-9 h-9 p-2 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 transition-colors">
             <IconYoutube />
           </a>
         </div>
