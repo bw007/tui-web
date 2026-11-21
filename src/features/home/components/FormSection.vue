@@ -9,45 +9,45 @@ import BaseButton from '@/shared/ui/BaseButton.vue';
         <form class="flex flex-col gap-5" action="">
           <div class="flex flex-col gap-2">
             <h3 class="text-[#1E2939] font-semibold text-2xl sm:text-3xl lg:text-4xl">
-              Саволларингиз борми?
+              {{ $t('form.title') }}
             </h3>
             <p class="text-[#4A5565] text-base sm:text-[18px]">
-              Саволингиз бизга юборинг биз кўриб чиқиб сизга алоқага чиқамиз
+              {{ $t('form.subtitle') }}
             </p>
           </div>
 
           <div class="grid grid-cols-2 gap-4 sm:gap-5">
             <div class="flex flex-col col-span-2 gap-1.5">
-              <label for="name" class="text-base sm:text-[18px] font-medium">ФИШ</label>
-              <input type="text" id="name" placeholder="Киритинг"
+              <label for="name" class="text-base sm:text-[18px] font-medium">{{ $t('form.fullName') }}</label>
+              <input type="text" id="name" :placeholder="$t('form.enter')"
                 class="bg-white border border-[#E5E7EB] rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 text-base sm:text-[18px] text-[#1E2939] focus:outline-none focus:border-brand" />
             </div>
 
             <div class="flex flex-col col-span-2 sm:col-span-1 gap-1.5">
-              <label for="phone" class="text-base sm:text-[18px] font-medium">Телефон рақам:</label>
+              <label for="phone" class="text-base sm:text-[18px] font-medium">{{ $t('form.phone') }}</label>
               <input type="text" id="phone" placeholder="+998 (__) ___-__-__"
                 class="bg-white border border-[#E5E7EB] rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 text-base sm:text-[18px] text-[#1E2939] focus:outline-none focus:border-brand" />
             </div>
 
             <div class="flex flex-col col-span-2 sm:col-span-1 gap-1.5">
-              <label for="email" class="text-base sm:text-[18px] font-medium">Электрон манзил:</label>
+              <label for="email" class="text-base sm:text-[18px] font-medium">{{ $t('form.email') }}</label>
               <input type="email" id="email" placeholder="example@email.com"
                 class="bg-white border border-[#E5E7EB] rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 text-base sm:text-[18px] text-[#1E2939] focus:outline-none focus:border-brand" />
             </div>
 
             <div class="flex flex-col col-span-2 gap-1.5">
-              <label for="message" class="text-base sm:text-[18px] font-medium">Matn:</label>
-              <textarea id="message" placeholder="Савол мазмуни"
+              <label for="message" class="text-base sm:text-[18px] font-medium">{{ $t('form.message') }}</label>
+              <textarea id="message" :placeholder="$t('form.messagePlaceholder')"
                 class="bg-white border border-[#E5E7EB] rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 text-base sm:text-[18px] text-[#1E2939] focus:outline-none focus:border-brand resize-none h-28 sm:h-32"></textarea>
             </div>
 
             <div class="flex flex-col col-span-2 gap-1.5">
               <label for="file" class="text-base sm:text-[18px] font-medium">
-                Файл:
+                {{ $t('form.file') }}
                 <input type="file" id="file" class="hidden" />
                 <div
                   class="mt-1.5 text-base sm:text-[18px] text-[#6D7589] p-3.5 sm:p-4 border rounded-xl border-dashed border-[#6A7282] cursor-pointer bg-[#F2F4F8] hover:opacity-75 transition">
-                  Файл бириктиринг
+                  {{ $t('form.attachFile') }}
                 </div>
               </label>
             </div>
@@ -62,15 +62,15 @@ import BaseButton from '@/shared/ui/BaseButton.vue';
       </div>
 
       <div class="flex flex-col justify-between gap-5 bg-[#F9FAFB] border border-[#E5E7EB] p-4 sm:p-6 rounded-2xl">
-        <h3 class="text-2xl sm:text-3xl text-[#1E2939] font-semibold">Сўровномалар</h3>
+        <h3 class="text-2xl sm:text-3xl text-[#1E2939] font-semibold">{{ $t('survey.title') }}</h3>
 
         <form action="" class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4 sm:gap-5">
           <div class="flex flex-col gap-2">
             <h4 class="text-lg sm:text-xl leading-tight font-medium">
-              Сўровнома! Сайтинг янги дизайнини қандай баҳолайсиз?
+              {{ $t('survey.pollTitle') }}
             </h4>
             <p class="text-[#4A5565] text-base sm:text-[18px]">
-              Ушбу сўровнома қатнашиш доирасида бизнинг хизматларини яхшилашда бизга ёрдам берасиз
+              {{ $t('survey.pollDesc') }}
             </p>
           </div>
 

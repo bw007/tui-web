@@ -22,11 +22,11 @@ const { pageData } = storeToRefs(layoutStore);
       </p>
     </div>
 
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <div
         v-for="item in categories"
         :key="item.id"
-        class="group bg-brand-light hover:bg-brand-light/80 transition-colors rounded-[14px] p-5 flex flex-col justify-between cursor-pointer"
+        class="group bg-brand-light hover:bg-brand transition-colors rounded-[14px] p-5 flex flex-col justify-between cursor-pointer"
       >
         <div class="flex items-start justify-between">
           <div class="w-14 h-14 rounded-[10px] bg-white/15 flex items-center justify-center text-white">

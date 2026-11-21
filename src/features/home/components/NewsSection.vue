@@ -12,10 +12,10 @@ const { news } = storeToRefs(homeStore)
   <section class="container font-sf mx-auto px-4.5 pb-30 flex flex-col gap-10 items-center">
     <div class="flex flex-col gap-3 text-center">
       <h2 class="text-[36px] font-semibold tracking-tight text-navy leading-tight">
-        Сўнги янгиликлар
+        {{ $t('news.title') }}
       </h2>
       <p class="text-slate text-lg">
-        Университет ҳақидаги сўнги воқеалардан хабардор бўлинг
+        {{ $t('news.subtitle') }}
       </p>
     </div>
 
