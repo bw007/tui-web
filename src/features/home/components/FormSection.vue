@@ -227,7 +227,7 @@ const confirmSendPoll = async () => {
                 {{ $t(item.label) }} - {{ item.count }}
               </span>
 
-              <div class="w-full h-[34px] bg-[#F0F2F5] rounded-full overflow-hidden">
+              <div class="w-full h-8.5 bg-[#F0F2F5] rounded-full overflow-hidden">
                 <div
                   class="h-full flex items-center justify-center text-sm font-bold transition-all duration-300"
                   :class="item.barClass"
