@@ -75,13 +75,20 @@ export const useHomeStore = defineStore('home', () => {
     polls.value = res.results
   }
 
-  const sendFeedback = async (formData: Form, params?: any) => {
-    await homeApi.sendFeedback(formData, params)
+  const sendFeedback = async (form: Form, params?: any) => {
+    const payload = new FormData()
+    payload.append('fio', form.fio)
+    payload.append('phone', form.phone)
+    payload.append('email', form.email || '')
+    payload.append('message', form.message)
+    if (form.file) payload.append('file', form.file)
+
+    await homeApi.sendFeedback(payload, params)
   }
 
   const sendPoll = async (option: { option: string }, params?: any) => {
     const res = await homeApi.sendPoll(option, params)
-    polls.value = res.data.counts
+    polls.value = res.counts
   }
 
   return {

@@ -10,11 +10,8 @@ export const homeApi = {
   getStats: (params?: any) => http.get<Stat[]>('/main/stats', { params }),
   getBases: (params?: any) => http.get<Bases[]>('/main/bases', { params }),
   getGallery: (params?: any) => http.get<never, Gallery>('/gallery', { params }),
-  sendFeedback: (data: Form, params?: any) =>
-    http.post('/feedback-send', data, {
-      params,
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
+  sendFeedback: (data: FormData, params?: any) => http.post('/feedback-send', data, { params }),
   getPolls: (params?: any) => http.get<never, {results: Polls}>('/polls/show', { params }),
-  sendPoll: (data: { option: string }, params?: any) => http.post<{ poll_id: number; counts: Polls }>('/polls', data, { params }),
+  sendPoll: (data: { option: string }, params?: any) =>
+    http.post<never, { poll_id: number; counts: Polls }>('/polls', data, { params }),
 }

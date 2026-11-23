@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 interface Props {
-  variant?: 'primary' | 'soft' | 'light' | 'white' | 'outline'
+  variant?: 'primary' | 'secondary' | 'soft' | 'light' | 'white' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
@@ -19,6 +19,8 @@ const variantClasses = computed(() => {
   switch (props.variant) {
     case 'primary':
       return 'bg-brand hover:bg-brand/90 active:bg-brand/80 text-white'
+    case 'secondary':
+      return 'bg-[#F0F2F5] hover:bg-[#E5E7EB] active:bg-[#D1D5DB] text-[#1E2939]'
     case 'soft':
       return 'bg-brand-soft hover:bg-brand/15 active:bg-brand/30 text-brand'
     case 'light':
@@ -47,7 +49,7 @@ const sizeClasses = computed(() => {
 </script>
 
 <template>
-  <component
+  <button
     :type="type || 'button'"
     :disabled="disabled"
     class="inline-flex py-3.5 items-center justify-center font-medium transition-colors duration-200 cursor-pointer select-none disabled:opacity-50 disabled:pointer-events-none"
@@ -56,5 +58,5 @@ const sizeClasses = computed(() => {
     <slot name="icon-left" />
     <slot />
     <slot name="icon-right" />
-  </component>
+  </button>
 </template>

@@ -25,6 +25,8 @@ export default {
     pollTitle: "So'rovnoma! Saytning yangi dizaynini qanday baholaysiz?",
     pollDesc: "Ushbu so'rovnomada qatnashish doirasida bizning xizmatlarimizni yaxshilashda yordam berasiz",
     resultsTitle: "So'rovnoma natijalari",
+    confirmTitle: "Javobni jo'natish",
+    confirmDesc: "Siz tanlagan javob: {answer}. Ushbu javobni jo'natishni xohlaysizmi?",
     pollOptions: {
       veryGood: "Juda yaxshi",
       good: "Yaxshi",
@@ -45,6 +47,8 @@ export default {
     allPolls: "Barcha so'rovnomalarni ko'rish",
     backToVote: "Ovoz berishga qaytish",
     partner: "Hamkor bo'lish",
+    cancel: "Bekor qilish",
+    yesSend: "Ha, jo'natish",
   },
   sidebar: {
     menu: "Menyu",

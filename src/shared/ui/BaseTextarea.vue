@@ -11,7 +11,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'lg',
-  rows: 4,
+  rows: 3,
   disabled: false,
 })
 
@@ -38,14 +38,8 @@ const sizeClasses = computed(() => {
       {{ label }}
     </label>
 
-    <textarea
-      :id="textareaId"
-      v-model="model"
-      :rows="rows"
-      :placeholder="placeholder"
-      :disabled="disabled"
+    <textarea :id="textareaId" v-model="model" :rows="rows" :placeholder="placeholder" :disabled="disabled"
       class="bg-white border border-[#E5E7EB] focus:border-brand text-[#1E2939] resize-none transition-colors duration-200 focus:outline-none disabled:opacity-50 disabled:bg-gray-50"
-      :class="[ sizeClasses ]"
-    />
+      :class="[sizeClasses]" />
   </div>
 </template>
