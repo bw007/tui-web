@@ -41,7 +41,7 @@ const sizeClasses = computed(() => {
     case 'md':
       return 'h-[42px] px-3.5 text-sm gap-2 rounded-lg'
     case 'lg':
-      return 'h-12.5 px-4.5 text-[18px] gap-2.5 rounded-[10px]'
+      return 'h-10 min-w-10 sm:h-12.5 px-2.5 sm:px-4.5 text-[18px] gap-2.5 rounded-[10px]'
     default:
       return ''
   }

@@ -26,11 +26,12 @@ const { pageData } = storeToRefs(layoutStore);
       <BaseSlider
         :items="partners"
         marquee
-        :marquee-speed="4000"
+        :marquee-speed="5000"
         :breakpoints="{
           1024: { slidesPerView: 5, spaceBetween: 24 },
           1280: { slidesPerView: 6, spaceBetween: 24 }
         }"
+        loop autoplay
       >
         <template #default="{ item }">
           <a

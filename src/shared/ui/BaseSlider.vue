@@ -8,6 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const defaultBreakpoints: SwiperOptions['breakpoints'] = {
+  320: { slidesPerView: 1, spaceBetween: 8 },
   520: { slidesPerView: 2, spaceBetween: 16 },
   1024: { slidesPerView: 3, spaceBetween: 16 },
   1280: { slidesPerView: 5, spaceBetween: 24 },

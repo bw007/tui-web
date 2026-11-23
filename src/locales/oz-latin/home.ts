@@ -54,4 +54,9 @@ export default {
     menu: "Menyu",
     socials: "Ijtimoiy tarmoqlar:",
   },
+  footer: {
+    "sections": "Bo'limlar",
+    "contacts": "Kontakt ma'lumotlar",
+    "developer": "Ishlab chiquvchi"
+  }
 };
