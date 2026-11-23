@@ -58,5 +58,10 @@ export default {
     "sections": "Бўлимлар",
     "contacts": "Контакт маълумотлар",
     "developer": "Ишлаб чиқувчи"
+  },
+  notFound: {
+    badge: "404 Хатолик",
+    title: "Кечирасиз, саҳифа топилмади",
+    homeButton: "Бош саҳифага қайтиш",
   }
 };

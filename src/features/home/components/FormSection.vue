@@ -178,67 +178,69 @@ const confirmSendPoll = async () => {
           {{ $t('poll.title') }}
         </h3>
 
-        <form
-          v-if="!showResults"
-          @submit.prevent
-          class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4 sm:gap-5"
-        >
-          <div class="flex flex-col gap-2">
-            <h4 class="text-lg sm:text-xl leading-tight font-medium">
-              {{ $t('poll.pollTitle') }}
+        <Transition name="fade" mode="out-in">
+          <form
+            v-if="!showResults"
+            @submit.prevent
+            class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4 sm:gap-5"
+          >
+            <div class="flex flex-col gap-2">
+              <h4 class="text-lg sm:text-xl leading-tight font-medium">
+                {{ $t('poll.pollTitle') }}
+              </h4>
+              <p class="text-[#4A5565] text-base sm:text-[18px]">
+                {{ $t('poll.pollDesc') }}
+              </p>
+            </div>
+
+            <div class="w-full flex flex-col gap-2.5 sm:gap-3">
+              <label
+                v-for="option in pollOptions"
+                :key="option.value"
+                class="flex items-center gap-3 sm:gap-3.5 p-3 sm:p-3.5 bg-white border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition has-checked:border-brand has-checked:bg-brand-light/5"
+              >
+                <input
+                  v-model="selectedPoll"
+                  type="radio"
+                  name="poll"
+                  :value="option.value"
+                  class="w-4 h-4 sm:w-5 sm:h-5 border-gray-300 focus:ring-brand shrink-0"
+                  @change="openConfirmModal"
+                />
+                <span class="text-gray-800 text-base sm:text-[18px] font-medium">
+                  {{ $t(option.label) }}
+                </span>
+              </label>
+            </div>
+          </form>
+
+          <div
+            v-else
+            class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4"
+          >
+            <h4 class="text-xl sm:text-[22px] text-[#1E2939] leading-tight font-bold">
+              {{ $t('poll.resultsTitle') }}
             </h4>
-            <p class="text-[#4A5565] text-base sm:text-[18px]">
-              {{ $t('poll.pollDesc') }}
-            </p>
-          </div>
 
-          <div class="w-full flex flex-col gap-2.5 sm:gap-3">
-            <label
-              v-for="option in pollOptions"
-              :key="option.value"
-              class="flex items-center gap-3 sm:gap-3.5 p-3 sm:p-3.5 bg-white border border-gray-200 rounded-xl cursor-pointer hover:border-gray-300 transition has-checked:border-brand has-checked:bg-brand-light/5"
-            >
-              <input
-                v-model="selectedPoll"
-                type="radio"
-                name="poll"
-                :value="option.value"
-                class="w-4 h-4 sm:w-5 sm:h-5 border-gray-300 focus:ring-brand shrink-0"
-                @change="openConfirmModal"
-              />
-              <span class="text-gray-800 text-base sm:text-[18px] font-medium">
-                {{ $t(option.label) }}
-              </span>
-            </label>
-          </div>
-        </form>
+            <div class="flex flex-col gap-4">
+              <div v-for="item in pollResults" :key="item.value" class="flex flex-col gap-2">
+                <span class="text-[#1E2939] text-base sm:text-[17px] font-bold">
+                  {{ $t(item.label) }} - {{ item.count }}
+                </span>
 
-        <div
-          v-else
-          class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4"
-        >
-          <h4 class="text-xl sm:text-[22px] text-[#1E2939] leading-tight font-bold">
-            {{ $t('poll.resultsTitle') }}
-          </h4>
-
-          <div class="flex flex-col gap-4">
-            <div v-for="item in pollResults" :key="item.value" class="flex flex-col gap-2">
-              <span class="text-[#1E2939] text-base sm:text-[17px] font-bold">
-                {{ $t(item.label) }} - {{ item.count }}
-              </span>
-
-              <div class="w-full h-8.5 bg-[#F0F2F5] rounded-full overflow-hidden">
-                <div
-                  class="h-full flex items-center justify-center text-sm font-bold transition-all duration-300"
-                  :class="item.barClass"
-                  :style="{ width: `${item.percent}%`, minWidth: item.percent > 0 ? '38px' : '0px' }"
-                >
-                  <span v-if="item.percent > 0">{{ item.percent }}%</span>
+                <div class="w-full h-8.5 bg-[#F0F2F5] rounded-full overflow-hidden">
+                  <div
+                    class="h-full flex items-center justify-center text-sm font-bold transition-all duration-300"
+                    :class="item.barClass"
+                    :style="{ width: `${item.percent}%`, minWidth: item.percent > 0 ? '38px' : '0px' }"
+                  >
+                    <span v-if="item.percent > 0">{{ item.percent }}%</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Transition>
 
         <BaseButton variant="outline" class="w-full" @click="togglePollView">
           <span class="text-brand">

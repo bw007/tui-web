@@ -58,5 +58,10 @@ export default {
     "sections": "Bo'limlar",
     "contacts": "Kontakt ma'lumotlar",
     "developer": "Ishlab chiquvchi"
+  },
+  notFound: {
+    badge: "404 Xatolik",
+    title: "Kechirasiz, sahifa topilmadi",
+    homeButton: "Bosh sahifaga qaytish"
   }
 };
