@@ -17,7 +17,7 @@ const props = defineProps<{item: News}>()
         />
       </div>
       <div class="p-3 pb-2">
-        <h3 class="text-lg font-medium text-[#1E293B] leading-[1.35] line-clamp-3">
+        <h3 class="text-lg font-medium text-[#1E293B] min-h-21 leading-[1.35] line-clamp-3">
           {{ item.title }}
         </h3>
       </div>

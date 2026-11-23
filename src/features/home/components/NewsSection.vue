@@ -3,6 +3,7 @@ import BaseButton from '@/shared/ui/BaseButton.vue'
 import NewsCard from '@/features/home/components/NewsCard.vue'
 import { useHomeStore } from '@/features/home/stores/home'
 import { storeToRefs } from 'pinia'
+import BaseSlider from '@/shared/ui/BaseSlider.vue'
 
 const homeStore = useHomeStore()
 const { news } = storeToRefs(homeStore)
@@ -19,12 +20,16 @@ const { news } = storeToRefs(homeStore)
       </p>
     </div>
 
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-      <NewsCard
-        v-for="item in news"
-        :key="item.id"
-        :item="item"
-      />
+    <div class="w-full min-w-0">
+      <BaseSlider
+        :items="news"
+        loop
+        autoplay
+      >
+        <template #default="{ item }">
+          <NewsCard :item="item" />
+        </template>
+      </BaseSlider>
     </div>
 
     <BaseButton>
