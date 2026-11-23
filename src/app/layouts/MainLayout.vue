@@ -8,12 +8,14 @@ import TheHeader from './TheHeader.vue'
 import TheFooter from './TheFooter.vue'
 import TheSidebar from './TheSidebar.vue'
 import { useLayoutStore } from '../stores/layout.ts'
+import BaseModal from '@/shared/ui/BaseModal.vue'
 
 const { locale } = useI18n()
 const layoutStore = useLayoutStore()
 const { socials } = storeToRefs(layoutStore)
 
 const sidebarOpen = ref(false)
+const isAuth = ref(false);
 
 const fetchLayoutData = async () => {
   await Promise.allSettled([
@@ -49,5 +51,15 @@ watch(locale, fetchLayoutData, { immediate: true })
       class="fixed bottom-5 right-5 md:bottom-12 md:right-12 w-14 h-14 rounded-full bg-brand-light flex items-center justify-center z-40 shadow-lg">
       <IconChat />
     </BaseButton>
+
+    <BaseModal body v-model="isAuth" :title="$t('poll.confirmTitle')">
+      <p class="text-[#4A5565] text-base">
+        salom
+      </p>
+
+      <template #footer="{ close }">
+        
+      </template>
+    </BaseModal>
   </div>
 </template>

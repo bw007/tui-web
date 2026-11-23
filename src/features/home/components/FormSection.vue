@@ -182,7 +182,7 @@ const confirmSendPoll = async () => {
           <form
             v-if="!showResults"
             @submit.prevent
-            class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-4 sm:gap-5"
+            class="flex flex-col border border-[#E5E7EB] bg-white rounded-xl p-4 sm:p-5 gap-3.5"
           >
             <div class="flex flex-col gap-2">
               <h4 class="text-lg sm:text-xl leading-tight font-medium">
@@ -242,7 +242,7 @@ const confirmSendPoll = async () => {
           </div>
         </Transition>
 
-        <BaseButton variant="outline" class="w-full" @click="togglePollView">
+        <BaseButton variant="outline" class="w-full mt-auto" @click="togglePollView">
           <span class="text-brand">
             {{ showResults ? $t('buttons.backToVote') : $t('buttons.allPolls') }}
           </span>
