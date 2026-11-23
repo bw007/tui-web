@@ -28,7 +28,7 @@ const { gallery } = storeToRefs(homeStore)
             <a
               target="_blank"
               :href="gallery?.data[0]?.files[0]?.img"
-              :download="gallery?.data[0]?.files[0]?.img"
+              download
               class="flex-1 p-4 flex items-center justify-center"
             >
               <img
@@ -44,10 +44,16 @@ const { gallery } = storeToRefs(homeStore)
           </h3>
         </div>
 
-        <BaseButton>
-          <IconDownload />
-          <span>{{ $t('buttons.downloadJournal') }}</span>
-        </BaseButton>
+        <a
+          target="_blank"
+          :href="gallery?.data[0]?.files[0]?.img"
+          download
+        >
+          <BaseButton>
+            <IconDownload />
+            <span>{{ $t('buttons.downloadJournal') }}</span>
+          </BaseButton>
+        </a>
       </div>
     </div>
   </section>
