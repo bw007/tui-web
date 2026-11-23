@@ -25,7 +25,8 @@ const { pageData } = storeToRefs(layoutStore);
     <div class="w-full min-w-0">
       <BaseSlider
         :items="partners"
-        loop autoplay
+        marquee
+        :marquee-speed="4000"
         :breakpoints="{
           1024: { slidesPerView: 5, spaceBetween: 24 },
           1280: { slidesPerView: 6, spaceBetween: 24 }

@@ -8,7 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const defaultBreakpoints: SwiperOptions['breakpoints'] = {
-  520:  { slidesPerView: 2, spaceBetween: 16 },
+  520: { slidesPerView: 2, spaceBetween: 16 },
   1024: { slidesPerView: 3, spaceBetween: 16 },
   1280: { slidesPerView: 5, spaceBetween: 24 },
 }
@@ -22,13 +22,17 @@ const props = withDefaults(
     autoplay?: boolean
     autoplayDelay?: number
     breakpoints?: SwiperOptions['breakpoints']
+    marquee?: boolean
+    marqueeSpeed?: number
   }>(),
   {
     navigation: false,
     pagination: false,
     loop: false,
     autoplay: false,
-    autoplayDelay: 3000
+    autoplayDelay: 3000,
+    marquee: false,
+    marqueeSpeed: 5000,
   },
 )
 
@@ -37,29 +41,34 @@ const mergedBreakpoints = computed(() => ({
   ...props.breakpoints,
 }))
 
+const showPagination = computed(() => props.pagination && !props.marquee)
+
 const modules = computed(() => {
   const list = []
   if (props.navigation) list.push(Navigation)
-  if (props.pagination) list.push(Pagination)
-  if (props.autoplay) list.push(Autoplay)
+  if (showPagination.value) list.push(Pagination)
+  if (props.autoplay || props.marquee) list.push(Autoplay)
   return list
 })
 
-const autoplayOptions = computed(() =>
-  props.autoplay
+const autoplayOptions = computed(() => {
+  if (props.marquee) return { delay: 0, disableOnInteraction: false }
+  return props.autoplay
     ? { delay: props.autoplayDelay, disableOnInteraction: false, pauseOnMouseEnter: true }
-    : false,
-)
+    : false
+})
 </script>
 
 <template>
   <Swiper
-    :class="['base-slider', { 'has-pagination': pagination }]"
+    :class="['base-slider', { 'has-pagination': showPagination, 'is-marquee': marquee }]"
     :modules="modules"
     :breakpoints="mergedBreakpoints"
     :navigation="navigation"
-    :pagination="pagination ? { clickable: true } : false"
-    :loop="loop"
+    :pagination="showPagination ? { clickable: true } : false"
+    :loop="loop || marquee"
+    :speed="marquee ? marqueeSpeed : 300"
+    :allow-touch-move="!marquee"
     :autoplay="autoplayOptions"
   >
     <SwiperSlide v-for="(item, i) in items" :key="i">
@@ -71,6 +80,9 @@ const autoplayOptions = computed(() =>
 <style scoped>
 .base-slider.has-pagination {
   padding-bottom: 40px;
+}
+.base-slider.is-marquee :deep(.swiper-wrapper) {
+  transition-timing-function: linear !important;
 }
 .base-slider :deep(.swiper-pagination) {
   bottom: 0;

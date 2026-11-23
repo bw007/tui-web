@@ -20,10 +20,18 @@ export default {
     file: "Fayl:",
     attachFile: "Fayl biriktiring",
   },
-  survey: {
+  poll: {
     title: "So'rovnomalar",
     pollTitle: "So'rovnoma! Saytning yangi dizaynini qanday baholaysiz?",
     pollDesc: "Ushbu so'rovnomada qatnashish doirasida bizning xizmatlarimizni yaxshilashda yordam berasiz",
+    resultsTitle: "So'rovnoma natijalari",
+    pollOptions: {
+      veryGood: "Juda yaxshi",
+      good: "Yaxshi",
+      satisfactory: "Qoniqarli",
+      unsatisfactory: "Qoniqarsiz",
+      hasFlaws: "Kamchiliklar mavjud",
+    },
   },
   buttons: {
     category: "Barcha kategoriyalarni ko'rish",
@@ -34,7 +42,8 @@ export default {
     read: "O'qish",
     download: "Yuklab olish",
     sendAppeal: "Murojaatni yuborish",
-    allSurvey: "Barcha so'rovnomalarni ko'rish",
+    allPolls: "Barcha so'rovnomalarni ko'rish",
+    backToVote: "Ovoz berishga qaytish",
     partner: "Hamkor bo'lish",
   },
   sidebar: {

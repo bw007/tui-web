@@ -61,6 +61,33 @@ export interface Category {
   }[]
 }
 
+export interface Polls {
+  result_1: number
+  result_2: number
+  result_3: number
+  result_4: number
+  result_5: number
+}
+
+export interface Gallery {
+  data: {
+    id: number
+    title: string
+    files: {
+      img: string
+      type: string
+    }[]
+  }[]
+}
+
+export interface Form {
+  fio: string
+  phone: string
+  email?: string
+  message: string
+  file?: any
+}
+
 export interface PageData {
   index_bases: string
   work_time: string

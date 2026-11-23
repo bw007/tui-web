@@ -19,6 +19,7 @@ const homeStore = useHomeStore();
 const fetchHomeData = async () => {
   await Promise.allSettled([
     homeStore.getCategories({ limit: 8, offset: 0 }),
+    homeStore.getGallery(),
     homeStore.getNews({ limit: 5, offset: 0 }),
     homeStore.getPosts({ limit: 6, offset: 0 }),
     homeStore.getPartners(),

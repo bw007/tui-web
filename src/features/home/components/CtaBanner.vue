@@ -2,6 +2,11 @@
 import IconBook from '@/shared/ui/icons/IconBook.vue'
 import IconDownload from '@/shared/ui/icons/IconDownload.vue'
 import BaseButton from '@/shared/ui/BaseButton.vue'
+import { useHomeStore } from '../stores/home'
+import { storeToRefs } from 'pinia'
+
+const homeStore = useHomeStore()
+const { gallery } = storeToRefs(homeStore)
 </script>
 
 <template>
@@ -20,17 +25,22 @@ import BaseButton from '@/shared/ui/BaseButton.vue'
             <div class="w-12.5 bg-[#3563B8] flex items-center justify-center text-white shrink-0">
               <IconBook />
             </div>
-            <div class="flex-1 p-2 flex items-center justify-center">
+            <a
+              target="_blank"
+              :href="gallery?.data[0]?.files[0]?.img"
+              :download="gallery?.data[0]?.files[0]?.img"
+              class="flex-1 p-4 flex items-center justify-center"
+            >
               <img
-                src="@/assets/issue.png"
+                :src="gallery?.data[0]?.files[1]?.img"
                 alt="Journal Cover"
-                class="w-full h-full object-contain"
+                class="w-42 h-59.25 object-contain"
               />
-            </div>
+            </a>
           </div>
 
           <h3 class="text-white text-lg md:text-[24px] font-medium leading-[1.35] max-w-85 text-center sm:text-left">
-            Ўзбекистон иқтисодиётида рақамли трансформация жараёнларининг ўрни
+            {{ gallery?.data[0]?.title }}
           </h3>
         </div>
 

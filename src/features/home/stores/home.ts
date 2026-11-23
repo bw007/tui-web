@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { homeApi } from '../api'
-import type { Bases, Category, News, Partner, Post, Stat } from '../types'
+import type { Bases, Category, Form, Gallery, News, Partner, Polls, Post, Stat } from '../types'
 
 export const useHomeStore = defineStore('home', () => {
   const news = ref<News[]>([])
@@ -10,6 +10,8 @@ export const useHomeStore = defineStore('home', () => {
   const stats = ref<Stat[]>([])
   const categories = ref<Category[]>([])
   const bases = ref<Bases[]>([])
+  const polls = ref<Polls | null>(null)
+  const gallery = ref<Gallery | null>(null)
 
   const getNews = async (params?: any) => {
     const res = await homeApi.getNews(params)
@@ -56,9 +58,30 @@ export const useHomeStore = defineStore('home', () => {
     categories.value = res.data
   }
 
+  const getGallery = async () => {
+    const res = await homeApi.getGallery();
+    
+    gallery.value = res
+  }
+
   const getBases = async () => {
     const res = await homeApi.getBases()
     bases.value = res.data
+  }
+
+  const getPolls = async (params?: any) => {
+    const res = await homeApi.getPolls(params)
+    
+    polls.value = res.results
+  }
+
+  const sendFeedback = async (formData: Form, params?: any) => {
+    await homeApi.sendFeedback(formData, params)
+  }
+
+  const sendPoll = async (option: { option: string }, params?: any) => {
+    const res = await homeApi.sendPoll(option, params)
+    polls.value = res.data.counts
   }
 
   return {
@@ -68,6 +91,8 @@ export const useHomeStore = defineStore('home', () => {
     stats,
     categories,
     bases,
+    polls,
+    gallery,
 
     downloadPost,
     getNews,
@@ -75,6 +100,10 @@ export const useHomeStore = defineStore('home', () => {
     getPartners,
     getStats,
     getCategories,
-    getBases
+    getBases,
+    getPolls,
+    sendFeedback,
+    sendPoll,
+    getGallery
   }
 })
